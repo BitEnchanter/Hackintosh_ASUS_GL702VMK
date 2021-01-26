@@ -1,5 +1,6 @@
-# Hackintosh ASUS ROG STRIX GL702VSK
+# Hackintosh ASUS ROG STRIX GL702VMK
 Hackintosh Files for High Sierra 13.6 @ ASUS GL702VMK
+
 Thanks @zubenelakrab for your amazing work.
 
 **Specs:**
