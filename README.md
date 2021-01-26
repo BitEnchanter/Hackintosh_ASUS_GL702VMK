@@ -1,41 +1,33 @@
 # Hackintosh ASUS ROG STRIX GL702VSK
-Hackintosh Files for High Sierra 13.6 @ ASUS GL702VSK
-
-![alt text](https://raw.githubusercontent.com/zubenelakrab/Hackintosh_ASUS_GL702VSK/master/About.jpeg)
-
-**Software:**
-* Olarila (last image for High Sierra 13.6)
+Hackintosh Files for High Sierra 13.6 @ ASUS GL702VMK
+Thanks @zubenelakrab for your amazing work.
 
 **Specs:**
 * Intel Core i7-7700HQ (Intel Core i7)
-* 32GB RAM
-* NVIDIA GeForce GTX 1070 (Laptop) - 8192 MB
-* 256GB x M.2 (Root partition Type: APS) + 1TB x SATA (Backup partition)
+* 16GB RAM
+* NVIDIA GeForce GTX 1060 (Laptop) - 6143 MB
+* 128GB x M.2 (Root partition Type: APS) + 1TB x SATA (Backup partition)
 
 **Working:**
-* NVIDIA GTX 1070
+* NVIDIA GTX 1060
 * Audio (Internal Speakers + HDMI Audio)
 * Sensors 
 * Ethernet
 * Audio Jack
 * USB 3.0/3.1, Thunderbolt, USB Type C, HDMI, Mini Display Port, Card Reader
 * Webcam
-* WIFI 2.4ghz + 5ghz (USB Dongle EDiMAX EW-7611UCB) **Bluetooth on this device won't work on OSX.*
+* Built-in WIFI card
 * CPU/GPU Fans
 * Battery
-* 4K Display (3840 x 2160) **No GSYNC.*
-* Belkin Mini Bluetooth V4.0 USB Adapter (F8T065)
-https://www.amazon.es/gp/product/B009IQB3US/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
+* 1080P Display (1920 x 1080) **No GSYNC.*
+* Built-in microphone
 
 **Not working:**
 * Touchpad
-* Built-in WIFI/Bluetooth card
+* Built-in Bluetooth card(There's driver but it can't function correctly with my iPhone and Airpods Pro)
 * Keyboard Backlight
 * Some FN keys
 * Temperature Sensors
-
-**Testing:**
-* Built-in microphone
 
 **Tips**
 After install kexts check permissions and update kextcache 
@@ -61,13 +53,6 @@ sudo kextcache -i /
 
 # Creating USB Stick
 
-# Battery + Sensors
-
-1. Apply DSDT Patch 
-2. Install FakeSMC (*/EFI/CLOVER/kexts/Other/*)
-
-![alt text](https://raw.githubusercontent.com/zubenelakrab/Hackintosh_ASUS_GL702VSK/master/bat_sensors.jpeg)
-
 # Fixing USB Stick KEXTS
 
 1. Mount your USB Stick EFI Volumen
@@ -77,42 +62,15 @@ sudo kextcache -i /
 
 # Pre-Install 
 
-DISABLE(Lock) Wifi + Bluetooth in your BIOS. 
+DISABLE(Lock) Secure Boot, Fast Boot Intel VT-d, virtualization support and CSM support in your BIOS. 
 
 # Installing
 
+Change the clover config from nvda_drv=1 to nv_disable=1 until you finish Nvidia Web Driver installation
 
 # Post-Install
 
-# Bluetooth
-
-Built-in bluetooth *MUST* be disabled after try anything.
-
-**How?**
-1. Open Clover Configurator
-2. Mount your EFI
-3. Import your /EFI/CLOVER/config.plist
-4. Go to Boot Menu (below Acpi)
-5. Add an extra argument: uia_exclude=HS09
-6. Reboot
-
-**Why HS09?**
-1. Download Hackingtool & Install
-2. Open it and go to the USB tab
-3. Find for USB Device: IOUSBHostDevice
-4. Got it, that is your Bluetooth HCI (Internal)
-5. DISABLE IT!
-
-**Enable your BT USB**
-1. Download Bluetooth kext folder.
-2. Copy them to /L/E
-3. Run on terminal *sudo kextcache -i /*
-4. Reboot
-5. Enjoy your BT working
-
-# DDST Patch
-
-* Added Battery patch
+If the nvidia web driver isn't working after reboot just press space during clover bootloader stage and choose boot with selected options.
 
 # High Sierra updates
 High Sierra can be updated from App Store but after this action kexts path permissions must be fixed using Kext Wizard (or command-line)
